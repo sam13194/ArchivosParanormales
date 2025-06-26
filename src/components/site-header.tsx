@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,10 +13,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/context/auth-context";
 
 export function SiteHeader() {
-  const isLoggedIn = false; // Mock authentication state
-
+  const { user, logout } = useAuth();
+  
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between gap-4">
@@ -24,7 +27,7 @@ export function SiteHeader() {
           </Link>
           <nav className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
             <Link href="/" className="transition-colors hover:text-foreground">Inicio</Link>
-            <Link href="#" className="transition-colors hover:text-foreground">Mi Lista</Link>
+            <Link href="/profile" className="transition-colors hover:text-foreground">Mi Lista</Link>
           </nav>
         </div>
 
@@ -38,7 +41,7 @@ export function SiteHeader() {
             <span className="sr-only">Notificaciones</span>
           </Button>
 
-          {isLoggedIn ? (
+          {user ? (
              <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -46,12 +49,12 @@ export function SiteHeader() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
+                <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild><Link href="/profile">Perfil</Link></DropdownMenuItem>
                 <DropdownMenuItem asChild><Link href="/admin">Panel Admin</Link></DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Cerrar Sesión</DropdownMenuItem>
+                <DropdownMenuItem onClick={logout} className="cursor-pointer">Cerrar Sesión</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (

@@ -1,8 +1,16 @@
+'use client';
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { useAuth } from "@/context/auth-context";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
 function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -10,7 +18,46 @@ function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
+const loginSchema = z.object({
+  email: z.string().email({ message: "Por favor ingresa un correo válido." }),
+  password: z.string().min(6, { message: "La contraseña debe tener al menos 6 caracteres." }),
+});
+
 export default function LoginPage() {
+  const { login } = useAuth();
+  const router = useRouter();
+  const { toast } = useToast();
+  
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = async (values: z.infer<typeof loginSchema>) => {
+    try {
+      await login(values.email, values.password);
+      toast({
+        title: "¡Bienvenido!",
+        description: "Has iniciado sesión correctamente.",
+      });
+      router.push("/profile");
+    } catch (error: any) {
+      const errorCode = error.code;
+      let errorMessage = "Ocurrió un error inesperado.";
+      if (errorCode === 'auth/wrong-password' || errorCode === 'auth/user-not-found' || errorCode === 'auth/invalid-credential') {
+        errorMessage = "El correo o la contraseña son incorrectos.";
+      }
+      toast({
+        variant: "destructive",
+        title: "Error al iniciar sesión",
+        description: errorMessage,
+      });
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-[calc(100vh-8rem)] py-12">
       <Card className="mx-auto max-w-sm w-full bg-card">
@@ -20,24 +67,54 @@ export default function LoginPage() {
             Ingresa tu correo para acceder a tu cuenta
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Correo Electrónico</Label>
-            <Input id="email" type="email" placeholder="testigo@paranormal.co" required />
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center">
-              <Label htmlFor="password">Contraseña</Label>
-              <Link href="#" className="ml-auto inline-block text-sm underline text-muted-foreground hover:text-primary">
-                ¿Olvidaste tu contraseña?
-              </Link>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Correo Electrónico</FormLabel>
+                    <FormControl>
+                      <Input placeholder="testigo@paranormal.co" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <div className="flex items-center">
+                      <FormLabel>Contraseña</FormLabel>
+                       <Link href="#" className="ml-auto inline-block text-sm underline text-muted-foreground hover:text-primary">
+                        ¿Olvidaste tu contraseña?
+                      </Link>
+                    </div>
+                    <FormControl>
+                      <Input type="password" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={form.formState.isSubmitting}>
+                {form.formState.isSubmitting ? "Iniciando..." : "Iniciar Sesión"}
+              </Button>
+            </form>
+          </Form>
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
             </div>
-            <Input id="password" type="password" required />
+            <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-card px-2 text-muted-foreground">O continúa con</span>
+            </div>
           </div>
-          <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-            Iniciar Sesión
-          </Button>
-          <Button variant="outline" className="w-full">
+           <Button variant="outline" className="w-full" disabled>
             <GoogleIcon className="mr-2 h-4 w-4" />
             Iniciar Sesión con Google
           </Button>
