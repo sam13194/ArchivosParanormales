@@ -3,7 +3,7 @@
 import type { Story } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock, MapPin, PlayCircle, Star, Award } from "lucide-react";
+import { Clock, MapPin, PlayCircle, Star, BadgeCheck } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { usePlayer } from "@/context/player-context";
 import { Button } from "./ui/button";
@@ -30,7 +30,7 @@ export function StoryCard({ story }: StoryCardProps) {
             alt={`Portada de ${story.title}`}
             fill
             className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             data-ai-hint={story.imageHint}
           />
         </Link>
@@ -63,8 +63,8 @@ export function StoryCard({ story }: StoryCardProps) {
            </Button>
         </div>
         {story.isBasedOnRealTestimony && (
-           <Badge variant="destructive" className="absolute top-2 left-2 bg-primary/80 text-primary-foreground text-[10px] px-1.5 py-0.5">
-             <Award className="h-3 w-3 mr-1"/>
+           <Badge variant="default" className="absolute top-2 left-2 text-[10px] px-1.5 py-0.5">
+             <BadgeCheck className="h-3 w-3 mr-1"/>
              Testimonio Real
            </Badge>
         )}
