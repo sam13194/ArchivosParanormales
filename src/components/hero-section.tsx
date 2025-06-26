@@ -1,14 +1,19 @@
+"use client";
+
 import type { Story } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { PlayCircle, BookOpen } from "lucide-react";
+import { usePlayer } from "@/context/player-context";
 
 interface HeroSectionProps {
   story: Story;
 }
 
 export function HeroSection({ story }: HeroSectionProps) {
+  const { playStory } = usePlayer();
+
   return (
     <div className="relative h-[60vh] md:h-[80vh] w-full flex items-end text-white">
       <Image
@@ -30,11 +35,9 @@ export function HeroSection({ story }: HeroSectionProps) {
             {story.summary}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground font-bold text-lg px-8 py-6">
-              <Link href={`/story/${story.id}`}>
+            <Button size="lg" className="bg-primary hover:bg-primary/80 text-primary-foreground font-bold text-lg px-8 py-6" onClick={() => playStory(story)}>
                 <PlayCircle className="mr-2 h-6 w-6" />
                 ESCUCHAR AHORA
-              </Link>
             </Button>
             <Button asChild size="lg" variant="secondary" className="bg-white/20 hover:bg-white/30 text-white font-bold text-lg px-8 py-6 backdrop-blur-sm">
               <Link href={`/story/${story.id}`}>
