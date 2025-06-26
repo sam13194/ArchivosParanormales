@@ -25,7 +25,6 @@ export function SiteHeader() {
           <nav className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
             <Link href="/" className="transition-colors hover:text-foreground">Inicio</Link>
             <Link href="#" className="transition-colors hover:text-foreground">Series</Link>
-            <Link href="#" className="transition-colors hover:text-foreground">Películas</Link>
             <Link href="#" className="transition-colors hover:text-foreground">Mi Lista</Link>
           </nav>
         </div>
