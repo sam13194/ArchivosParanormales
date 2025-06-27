@@ -5,7 +5,7 @@ export const mockStoryData: Story = {
   title: "El Conjunto Embrujado de Chía",
   summary: "Un guardia de seguridad relata la intensa actividad paranormal en un conjunto de apartamentos en Chía: sombras en las cámaras, ascensores que se mueven solos, luces que se prenden, y cómo lo han jalado físicamente de la silla.",
   fullText: "La noche era especialmente fría en Chía cuando Yonjairo se acomodó frente a los monitores de seguridad. Como todas las noches desde hacía un año, sabía que su turno sería cualquier cosa menos tranquilo. El conjunto residencial de tres torres, con sus 120 apartamentos modernos, escondía un secreto que ningún arquitecto había considerado durante la construcción: estaba edificado sobre un antiguo cementerio indígena...",
-  imageUrl: "https://i.postimg.cc/8zQZ7G3y/Whats-App-Image-2024-07-25-at-1-08-31-AM.jpg",
+  imageUrl: "https://i.postimg.cc/T3WrMwmy/image.png",
   imageHint: "haunted apartment",
   location: "Chía, Cundinamarca",
   impact: 4,
@@ -27,7 +27,7 @@ export const mockStories: Story[] = [
   {
     id: 1,
     title: "La Llorona del Río Fucha",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "https://placehold.co/600x800",
     imageHint: "crying ghost",
     location: "Bogotá, Cundinamarca",
     impact: 5,
@@ -45,7 +45,7 @@ export const mockStories: Story[] = [
   {
     id: 2,
     title: "El Fantasma de la Candelaria",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "https://placehold.co/600x800",
     imageHint: "colonial ghost",
     location: "Bogotá, Cundinamarca",
     impact: 3,
@@ -63,7 +63,7 @@ export const mockStories: Story[] = [
   {
     id: 3,
     title: "La Casa de los Lamentos",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "https://placehold.co/600x800",
     imageHint: "haunted house",
     location: "Medellín, Antioquia",
     impact: 4,
@@ -81,7 +81,7 @@ export const mockStories: Story[] = [
     {
     id: 5,
     title: "El Demonio de Monserrate",
-    imageUrl: "https://placehold.co/600x400",
+    imageUrl: "https://placehold.co/600x800",
     imageHint: "mountain demon",
     location: "Bogotá, Cundinamarca",
     impact: 5,
