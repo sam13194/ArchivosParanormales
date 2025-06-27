@@ -21,13 +21,13 @@ export function SiteFooter() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-sm">
             <div className="space-y-3">
               <h3 className="font-bold text-foreground">Explorar</h3>
-              <Link href="#" className="block hover:text-foreground transition-colors">Inicio</Link>
+              <Link href="/" className="block hover:text-foreground transition-colors">Inicio</Link>
               <Link href="#" className="block hover:text-foreground transition-colors">Categorías</Link>
               <Link href="#" className="block hover:text-foreground transition-colors">Mapa de Historias</Link>
             </div>
             <div className="space-y-3">
               <h3 className="font-bold text-foreground">Comunidad</h3>
-              <Link href="#" className="block hover:text-foreground transition-colors">Enviar Testimonio</Link>
+              <Link href="/submit-story" className="block hover:text-foreground transition-colors">Enviar Testimonio</Link>
               <Link href="#" className="block hover:text-foreground transition-colors">Foros</Link>
               <Link href="/profile" className="block hover:text-foreground transition-colors">Mi Perfil</Link>
             </div>

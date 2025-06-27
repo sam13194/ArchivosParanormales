@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, UserCircle, Bell } from "lucide-react";
+import { Search, UserCircle, Bell, ShieldCheck } from "lucide-react";
 import { Logo } from "./icons/logo";
 import {
   DropdownMenu,
@@ -17,6 +17,8 @@ import { useAuth } from "@/context/auth-context";
 
 export function SiteHeader() {
   const { user, logout } = useAuth();
+  // Simple role check for admin UI. In a real app, this should use custom claims.
+  const isAdmin = user && user.email === 'admin@paranormal.co';
   
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -27,7 +29,7 @@ export function SiteHeader() {
           </Link>
           <nav className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
             <Link href="/" className="transition-colors hover:text-foreground">Inicio</Link>
-            <Link href="/profile" className="transition-colors hover:text-foreground">Mi Lista</Link>
+            <Link href="/profile" className="transition-colors hover:text-foreground">Mi Portal</Link>
           </nav>
         </div>
 
@@ -51,8 +53,15 @@ export function SiteHeader() {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild><Link href="/profile">Perfil</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/admin">Panel Admin</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/profile">Mi Portal</Link></DropdownMenuItem>
+                {isAdmin && (
+                  <DropdownMenuItem asChild>
+                    <Link href="/admin" className="flex items-center w-full">
+                      <ShieldCheck className="mr-2 h-4 w-4" />
+                      <span>Panel Admin</span>
+                    </Link>
+                  </DropdownMenuItem>
+                )}
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={logout} className="cursor-pointer">Cerrar Sesión</DropdownMenuItem>
               </DropdownMenuContent>
