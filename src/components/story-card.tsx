@@ -23,7 +23,7 @@ export function StoryCard({ story }: StoryCardProps) {
 
   return (
     <div className="group">
-      <div className="aspect-[16/9] relative rounded-md overflow-hidden bg-card">
+      <div className="aspect-[3/4] relative rounded-md overflow-hidden bg-card">
         <Link href={`/story/${story.id}`} aria-label={`Ver detalles de ${story.title}`}>
           <Image
             src={story.imageUrl}
