@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/context/auth-context";
-import { FileEdit, History, UserCog, Heart, Trophy, BadgeCheck, Clock } from "lucide-react";
+import { FileEdit, History, Heart, Trophy, BadgeCheck, Clock } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -22,11 +22,9 @@ export default function ProfilePage() {
   }, [user, loading, router]);
 
   const myFavoriteStories = [...mockStories].slice(0, 4);
-  const mySubmissions = [
-      { title: "La sombra en el pasillo", status: "Publicado", date: "2024-05-15" },
-      { title: "Ruidos en la cocina", status: "En revisión", date: "2024-06-01" },
-      { title: "El espectro del hospital", status: "En revisión", date: "2024-06-10" },
-  ];
+  // We leave this empty to show the new user prompt. You can add stories to see the list.
+  const mySubmissions: { title: string; status: string; date: string }[] = [];
+  
   const myAchievements = [
       { icon: FileEdit, title: "Primer Testimonio", description: "Compartiste tu primera historia.", locked: false },
       { icon: Trophy, title: "Narrador Prolífico", description: "Has compartido 5 historias.", locked: true },
@@ -53,10 +51,10 @@ export default function ProfilePage() {
         </Button>
       </div>
       
-      <Tabs defaultValue="favorites" className="w-full">
+      <Tabs defaultValue="submissions" className="w-full">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="favorites"><Heart className="mr-2 h-4 w-4"/> Mi Lista</TabsTrigger>
-          <TabsTrigger value="submissions"><History className="mr-2 h-4 w-4"/>Mis Testimonios</TabsTrigger>
+          <TabsTrigger value="submissions"><History className="mr-2 h-4 w-4"/>Mis Historias</TabsTrigger>
           <TabsTrigger value="achievements"><Trophy className="mr-2 h-4 w-4"/>Mis Logros</TabsTrigger>
         </TabsList>
 
@@ -67,22 +65,35 @@ export default function ProfilePage() {
         <TabsContent value="submissions" className="mt-6">
           <Card>
             <CardHeader>
-              <CardTitle>Estado de tus Testimonios</CardTitle>
-              <CardDescription>Aquí puedes ver el progreso de las historias que has compartido.</CardDescription>
+              <CardTitle>Mis Historias Compartidas</CardTitle>
+              <CardDescription>Aquí puedes ver el progreso de las historias que has enviado.</CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-4">
-                {mySubmissions.map((sub, i) => (
-                  <li key={i} className="flex flex-wrap items-center justify-between gap-4 p-3 bg-card-foreground/5 rounded-lg">
-                    <span className="font-medium">{sub.title}</span>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      {sub.status === 'Publicado' ? <BadgeCheck className="h-4 w-4 text-primary" /> : <Clock className="h-4 w-4 text-accent" />}
-                      <span className={sub.status === 'Publicado' ? 'text-primary' : 'text-accent'}>{sub.status}</span>
-                      <span>- {sub.date}</span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              {mySubmissions.length > 0 ? (
+                <ul className="space-y-4">
+                  {mySubmissions.map((sub, i) => (
+                    <li key={i} className="flex flex-wrap items-center justify-between gap-4 p-3 bg-card-foreground/5 rounded-lg">
+                      <span className="font-medium">{sub.title}</span>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        {sub.status === 'Publicado' ? <BadgeCheck className="h-4 w-4 text-primary" /> : <Clock className="h-4 w-4 text-accent" />}
+                        <span className={sub.status === 'Publicado' ? 'text-primary' : 'text-accent'}>{sub.status}</span>
+                        <span>- {sub.date}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="text-center py-10 border-2 border-dashed rounded-lg bg-card-foreground/5">
+                  <FileEdit className="mx-auto h-12 w-12 text-muted-foreground" />
+                  <h3 className="mt-4 text-lg font-semibold">¿Tienes una historia que contar?</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    No guardes ese escalofrío para ti. ¡Compártelo con la comunidad!
+                  </p>
+                  <Button asChild className="mt-6">
+                     <Link href="/submit-story">Tienes una historia, cuéntala aquí</Link>
+                  </Button>
+                </div>
+              )}
             </CardContent>
           </Card>
         </TabsContent>
