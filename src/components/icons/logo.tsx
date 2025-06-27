@@ -5,8 +5,8 @@ export function Logo() {
     <Image
       src="https://i.postimg.cc/7YpjzK9b/LOGOArchivos-Paranormales.png"
       alt="Archivos Paranormales Logo"
-      width={290}
-      height={36}
+      width={232}
+      height={29}
       priority
     />
   );
