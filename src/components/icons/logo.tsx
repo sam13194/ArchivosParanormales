@@ -1,9 +1,9 @@
 export function Logo() {
   return (
-    <svg width="180" height="32" viewBox="0 0 180 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="290" height="36" viewBox="0 0 290 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <text
         x="0"
-        y="24"
+        y="28"
         fontFamily="'Playfair Display', serif"
         fontSize="24"
         fontWeight="700"
