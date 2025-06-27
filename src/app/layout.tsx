@@ -11,6 +11,9 @@ import { AuthProvider } from '@/context/auth-context';
 export const metadata: Metadata = {
   title: 'Echoes of the Unseen - Archivos Paranormales',
   description: 'The Netflix of Terror for real paranormal testimonials.',
+  icons: {
+    icon: 'https://i.postimg.cc/7YpjzK9b/LOGOArchivos-Paranormales.png',
+  },
 };
 
 export default function RootLayout({
