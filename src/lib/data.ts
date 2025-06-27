@@ -82,7 +82,7 @@ export const mockStories: Story[] = [
     {
     id: 5,
     title: "El Demonio de Monserrate",
-    imageUrl: "https://placehold.co/600x800",
+    imageUrl: "https://i.postimg.cc/BQLZB1Bw/image-4.png",
     imageHint: "mountain demon",
     location: "Bogotá, Cundinamarca",
     impact: 5,
