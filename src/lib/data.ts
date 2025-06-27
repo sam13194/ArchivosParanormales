@@ -46,7 +46,7 @@ export const mockStories: Story[] = [
   {
     id: 2,
     title: "El Fantasma de la Candelaria",
-    imageUrl: "https://placehold.co/600x800",
+    imageUrl: "https://i.postimg.cc/G2t90gvb/image-8.png",
     imageHint: "colonial ghost",
     location: "Bogotá, Cundinamarca",
     impact: 3,
