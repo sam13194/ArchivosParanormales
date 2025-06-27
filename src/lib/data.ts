@@ -64,7 +64,7 @@ export const mockStories: Story[] = [
   {
     id: 3,
     title: "La Casa de los Lamentos",
-    imageUrl: "https://placehold.co/600x800",
+    imageUrl: "https://i.postimg.cc/KvR77QVS/image-6.png",
     imageHint: "haunted house",
     location: "Medellín, Antioquia",
     impact: 4,
