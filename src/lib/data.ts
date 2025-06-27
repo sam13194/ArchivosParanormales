@@ -6,6 +6,7 @@ export const mockStoryData: Story = {
   summary: "Un guardia de seguridad relata la intensa actividad paranormal en un conjunto de apartamentos en Chía: sombras en las cámaras, ascensores que se mueven solos, luces que se prenden, y cómo lo han jalado físicamente de la silla.",
   fullText: "La noche era especialmente fría en Chía cuando Yonjairo se acomodó frente a los monitores de seguridad. Como todas las noches desde hacía un año, sabía que su turno sería cualquier cosa menos tranquilo. El conjunto residencial de tres torres, con sus 120 apartamentos modernos, escondía un secreto que ningún arquitecto había considerado durante la construcción: estaba edificado sobre un antiguo cementerio indígena...",
   imageUrl: "https://i.postimg.cc/T3WrMwmy/image.png",
+  backgroundImageUrl: "https://i.postimg.cc/GmxWFcV5/image-1.png",
   imageHint: "haunted apartment",
   location: "Chía, Cundinamarca",
   impact: 4,

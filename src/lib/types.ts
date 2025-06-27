@@ -2,6 +2,7 @@ export interface Story {
   id: number;
   title: string;
   imageUrl: string;
+  backgroundImageUrl?: string;
   imageHint: string;
   location: string;
   impact: number;

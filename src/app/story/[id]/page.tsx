@@ -19,7 +19,7 @@ export default function StoryPage({ params }: { params: { id: string } }) {
     <div className="min-h-screen">
       <div className="relative h-[50vh] w-full">
         <Image
-          src={story.imageUrl}
+          src={story.backgroundImageUrl || story.imageUrl}
           alt={`Imagen de fondo para ${story.title}`}
           fill
           className="object-cover"
