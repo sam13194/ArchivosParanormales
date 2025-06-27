@@ -28,7 +28,7 @@ export const mockStories: Story[] = [
   {
     id: 1,
     title: "La Llorona del Río Fucha",
-    imageUrl: "https://placehold.co/600x800",
+    imageUrl: "https://i.postimg.cc/MZY33sdn/image-5.png",
     imageHint: "crying ghost",
     location: "Bogotá, Cundinamarca",
     impact: 5,
