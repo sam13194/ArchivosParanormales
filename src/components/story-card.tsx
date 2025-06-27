@@ -3,7 +3,7 @@
 import type { Story } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock, MapPin, PlayCircle, Star, BadgeCheck } from "lucide-react";
+import { Clock, MapPin, PlayCircle, Star, BadgeCheck, Heart } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { usePlayer } from "@/context/player-context";
 import { Button } from "./ui/button";
@@ -19,6 +19,13 @@ export function StoryCard({ story }: StoryCardProps) {
     e.preventDefault();
     e.stopPropagation();
     playStory(story);
+  };
+
+  const handleFavoriteClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // TODO: Add logic to add/remove from favorites
+    console.log("Favorited:", story.title);
   };
 
   return (
@@ -51,7 +58,16 @@ export function StoryCard({ story }: StoryCardProps) {
             </div>
           </div>
         </div>
-        <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+           <Button
+            variant="ghost"
+            size="icon"
+            onClick={handleFavoriteClick}
+            className="bg-background/80 hover:bg-background/90 rounded-full h-10 w-10 pointer-events-auto"
+            aria-label={`Añadir a favoritos ${story.title}`}
+          >
+             <Heart className="h-5 w-5 text-primary/80 hover:fill-primary hover:text-primary" />
+           </Button>
            <Button
             variant="ghost"
             size="icon"
