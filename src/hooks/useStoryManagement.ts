@@ -622,7 +622,7 @@ export function useStoryManagement() {
       
     } catch (error) {
       console.error('Error uploading file:', error);
-      alert(`❌ Error al subir archivo: ${error.message}`);
+      alert(`❌ Error al subir archivo: ${error instanceof Error ? error.message : 'Error desconocido'}`);
     } finally {
       setIsUploadingFiles(false);
     }
@@ -797,7 +797,7 @@ export function useStoryManagement() {
       
     } catch (error) {
       console.error('Error loading JSON:', error);
-      alert('Error al cargar el archivo JSON: ' + error.message);
+      alert('Error al cargar el archivo JSON: ' + (error instanceof Error ? error.message : 'Error desconocido'));
     } finally {
       setIsLoadingJson(false);
     }
@@ -813,14 +813,114 @@ export function useStoryManagement() {
       historias: newStoryForm.historias,
       ubicacion: newStoryForm.ubicacion,
       testigo_principal: newStoryForm.testigo_principal,
-      testigos_secundarios: newStoryForm.testigos_secundarios,
-      entidades_paranormales: newStoryForm.entidades_paranormales,
+      testigos_secundarios: newStoryForm.testigos_secundarios.length > 0 ? newStoryForm.testigos_secundarios : [
+        {
+          tipo_testigo: "secundario",
+          nombre_completo: "",
+          pseudonimo: "",
+          edad_aprox: 0,
+          ocupacion: "",
+          relacion_evento: "",
+          presencial: false,
+          credibilidad_estimada: 0,
+          factores_credibilidad: {},
+          antecedentes_paranormales: false,
+          contacto_disponible: false,
+          notas_testigo: ""
+        }
+      ],
+      entidades_paranormales: newStoryForm.entidades_paranormales.length > 0 ? newStoryForm.entidades_paranormales : [
+        {
+          tipo: "fantasma",
+          tipo_entidad: "espiritu_humano",
+          nombre_entidad: "",
+          descripcion: "",
+          descripcion_fisica: "",
+          comportamiento: "",
+          nivel_agresividad: 1,
+          frecuencia_aparicion: "ocasional",
+          horarios_actividad: "",
+          interaccion_fisica: false,
+          comunicacion_verbal: false,
+          comunicacion_no_verbal: false,
+          objetos_afectados: "",
+          temperatura_cambios: false,
+          olores_asociados: "",
+          sonidos_caracteristicos: "",
+          patron_movimiento: "",
+          reaccion_presencia_humana: "",
+          vinculos_emocionales: "",
+          historia_previa_lugar: "",
+          metodos_interaccion: "",
+          respuesta_rituales: "",
+          evidencia_fisica_dejada: "",
+          testigos_multiples: false,
+          consistencia_apariciones: ""
+        }
+      ],
       contexto_ambiental: newStoryForm.contexto_ambiental,
-      archivos_multimedia: newStoryForm.archivos_multimedia,
-      elementos_clave: newStoryForm.elementos_clave,
+      // ✅ Añadir las tablas de contexto faltantes
+      contexto_social: {
+        numero_personas: newStoryForm.contexto_ambiental.numero_personas || 1,
+        situacion_social: newStoryForm.contexto_ambiental.situacion_social || "",
+        estado_emocional: newStoryForm.contexto_ambiental.estado_emocional || "",
+        actividad_previa: newStoryForm.contexto_ambiental.actividad_previa || ""
+      },
+      contexto_temporal_astronomico: {
+        hora_del_dia: newStoryForm.contexto_ambiental.hora_del_dia || "",
+        estacion_año: newStoryForm.contexto_ambiental.estacion_año || "",
+        fase_lunar: newStoryForm.contexto_ambiental.fase_lunar || "",
+        patron_temporal: newStoryForm.contexto_ambiental.patron_temporal || false
+      },
+      contexto_cultural_religioso: {
+        festividad_religiosa: newStoryForm.contexto_ambiental.festividad_religiosa || "",
+        evento_historico: newStoryForm.contexto_ambiental.evento_historico || "",
+        aniversario_especial: newStoryForm.contexto_ambiental.aniversario_especial || ""
+      },
+      archivos_multimedia: newStoryForm.archivos_multimedia.length > 0 ? newStoryForm.archivos_multimedia : [
+        {
+          tipo_archivo: "audio_original",
+          nombre_archivo: "",
+          ruta_absoluta: "",
+          ruta_relativa: "",
+          tamaño_bytes: 0,
+          hash_archivo: "",
+          duracion_segundos: 0,
+          formato: "mp3",
+          bitrate: "128kbps",
+          sample_rate: 44100,
+          canales: 1,
+          descripcion: "",
+          version: 1,
+          is_active: true
+        },
+        {
+          tipo_archivo: "imagen_portada",
+          nombre_archivo: "",
+          ruta_absoluta: "",
+          ruta_relativa: "",
+          tamaño_bytes: 0,
+          ancho_px: 1920,
+          alto_px: 1080,
+          descripcion: "",
+          metadata_extra: {
+            photographer: "",
+            style: "",
+            color_scheme: "",
+            mood: ""
+          }
+        }
+      ],
+      elementos_clave: newStoryForm.elementos_clave.length > 0 ? newStoryForm.elementos_clave : [""],
       factores_credibilidad: newStoryForm.factores_credibilidad,
       derechos: newStoryForm.derechos,
-      performance_esperado: newStoryForm.performance_esperado
+      performance_esperado: newStoryForm.performance_esperado,
+      // ✅ Asegurar que metricas_objetivo tenga la estructura completa
+      metricas_objetivo: {
+        retencion_audiencia: newStoryForm.performance_esperado.metricas_objetivo?.retencion_audiencia || "75%",
+        shares_objetivo: newStoryForm.performance_esperado.metricas_objetivo?.shares_objetivo || 5000,
+        ...newStoryForm.performance_esperado.metricas_objetivo
+      }
     };
     
     const blob = new Blob([JSON.stringify(template, null, 2)], { type: 'application/json' });
