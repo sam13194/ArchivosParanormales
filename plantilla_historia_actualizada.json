@@ -1,0 +1,68 @@
+{
+  "codigo_unico": "PRUEBA_TEMPLATE_001",
+  "titulo": "Historia de Prueba con Rangos Correctos",
+  "descripcion_corta": "Historia para probar que todos los campos están dentro de los rangos válidos",
+  "testimonio_completo": "Este testimonio sirve para verificar que la plantilla JSON actualizada funciona correctamente con las restricciones de la base de datos.",
+  "archivos_multimedia": [
+    {
+      "tipo_archivo": "audio_original",
+      "nombre_archivo": "prueba_audio.mp3",
+      "ruta_absoluta": "https://res.cloudinary.com/dwiz8bahl/video/upload/v1234567890/test-audio.mp3",
+      "ruta_relativa": "audio/prueba_audio.mp3",
+      "tamaño_bytes": 5000000,
+      "duracion_segundos": 600,
+      "formato": "mp3",
+      "bitrate": "128kbps",
+      "sample_rate": 44100,
+      "canales": 2,
+      "descripcion": "Audio de prueba"
+    },
+    {
+      "tipo_archivo": "imagen_portada",
+      "nombre_archivo": "prueba_imagen.jpg",
+      "ruta_absoluta": "https://res.cloudinary.com/dwiz8bahl/image/upload/v1234567890/test-image.jpg",
+      "ruta_relativa": "imagen/prueba_imagen.jpg",
+      "tamaño_bytes": 1000000,
+      "ancho_px": 800,
+      "alto_px": 600,
+      "descripcion": "Imagen de prueba"
+    }
+  ],
+  "ubicacion": {
+    "pais": "Colombia",
+    "departamento": "Cundinamarca",
+    "ciudad": "Bogotá",
+    "descripcion_lugar": "Lugar de prueba"
+  },
+  "fuente_relato": "llamada_oyente",
+  "genero_principal": "paranormal",
+  "nivel_credibilidad": 4.5,
+  "nivel_impacto": 4,
+  "ponderacion_impacto": 4,
+  "potencial_adaptacion": 2,
+  "nivel_verificacion": "multiples_testigos",
+  "factores_credibilidad": {
+    "multiples_testigos": 4,
+    "evidencia_fisica": 2,
+    "consistencia_relatos": 4,
+    "ubicacion_verificable": 5,
+    "contexto_historico": 4,
+    "sobriedad_testigo": 5,
+    "conocimiento_previo": 2,
+    "estado_emocional": 4
+  },
+  "dificultad_produccion": 3,
+  "tiempo_produccion_estimado": 300,
+  "duracion_impacto_emocional": "moderado",
+  "derechos_uso": "permiso_verbal",
+  "autorizacion_comercial": true,
+  "autorizacion_adaptacion": true,
+  "fecha_sucesos": "2024-12-01",
+  "hora_evento": "22:30:00",
+  "testigo_principal": {
+    "pseudonimo": "María L.",
+    "edad": 28,
+    "ocupacion": "Estudiante",
+    "credibilidad": 5
+  }
+}

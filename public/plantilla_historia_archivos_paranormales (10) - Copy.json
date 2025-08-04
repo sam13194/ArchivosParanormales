@@ -1,0 +1,170 @@
+{
+  "_RESTRICCIONES_DE_CAMPOS": "IMPORTANTE LEER - Los siguientes campos tienen restricciones específicas en la base de datos",
+  "_CAMPOS_NUMERICOS_RANGOS": {
+    "nivel_credibilidad": "0-5 (decimal, precisión 0.1)",
+    "ponderacion_impacto": "1-5 (entero)",
+    "potencial_adaptacion": "1-3 (entero)",
+    "dificultad_produccion": "1-5 (entero)",
+    "factores_credibilidad_todos": "1-5 (entero cada uno)"
+  },
+  "_CAMPOS_ENUM_VALORES_VALIDOS": {
+    "fuente_relato": "llamada_oyente | historia_programa | investigacion_propia",
+    "nivel_verificacion": "sin_verificar | testimonio_unico | multiples_testigos | evidencia_fisica | investigacion_completa | verificado_experto",
+    "duracion_impacto_emocional": "leve | moderado | intenso | traumático",
+    "derechos_uso": "dominio_publico | uso_libre | permiso_verbal | contrato_firmado | pendiente_autorizacion | uso_restringido",
+    "estado_procesamiento": "extraida | en_adaptacion | adaptada | en_produccion | producida | publicada"
+  },
+  "codigo_unico": "MANICOMIO_CEMENTERIO_001",
+  "fecha_transcripcion": "2024-05-21",
+  "estado_procesamiento": "adaptada",
+  "hash_similarity": "c8d1e6f3a9b2c7d4e5f8g1h4i7j0k3l6",
+  "palabras_clave_patron": [
+    "manicomio",
+    "sanatorio",
+    "cementerio",
+    "enfermero",
+    "noche",
+    "paciente",
+    "bruja",
+    "sombra",
+    "fuga"
+  ],
+  "titulo_provisional": "Cementerio en el Manicomio",
+  "descripcion_corta": "Un ex-trabajador narra diez años de terror psicológico y sucesos paranormales en un hospital psiquiátrico con su propio cementerio abandonado.",
+  "descripcion_larga": "El testimonio de un enfermero que trabajó durante una década en un sanatorio aislado. Relata desde encuentros con una sombra alada en sus rondas nocturnas hasta el escalofriante caso de una paciente con supuestas habilidades psíquicas que desaparecía de su cuarto cerrado para aparecer en el cementerio del lugar, eventos que finalmente lo obligaron a abandonar su profesión.",
+  "testimonio_completo": "Pues en algunas ocasiones yo vi cosas, cosas que eran normales, cosas muy extrañas, pero que de pronto ya haya visto como así como un espanto o algo así, jamás vi. Pero sí pasan cosas, por ejemplo, en el cementerio que eran complicadas. El sitio tiene un cementerio propio. En muchas ocasiones me tocaba por ejemplo salir a buscar los pacientes cuando se salían del hospital y me tocaba irlos a buscar al cementerio y en algunas ocasiones, pues era tan descuidado el cementerio como estaba, que los mismos pacientes sacaban las extremidades de los pacientes muertos y las llevaban a los servicios. Fue una causa por la que yo me retiré, fue que ya era muy frecuente que desde los con principios que alguna persona yo sentía que me perseguía. Una paciente que yo conocía en el hospital, cuando yo fui a verla, ella pues decía a todo el mundo que era bruja. Cuando nosotros llegamos pues yo no la vi en el cuarto. En ese lugar era totalmente encerrado por donde no podía salir ninguna persona. Cuando la paciente desnuda allá en ese lugar, me miró y siguió derecho y volvió y se acostó.",
+  "extracto_verbatim": "Los ascensores se movían solos, las luces se prendían y apagaban, y juraría que alguien caminaba por los pasillos en la madrugada",
+  "historia_reescrita": "Elías no recordaba un día en que el Sanatorio de la Colina Verde no oliera a una mezcla de antiséptico, tierra húmeda y una tristeza tan densa que casi podía tocarse. Lo llamaban \"neuropsiquiátrico\", una palabra pulcra para un lugar que no lo era. Se extendía como una granja enferma, una colección de pabellones de piedra gris esparcidos por un campo engañosamente bucólico, cada uno un silo para un tipo distinto de desesperación. Durante diez años, ese fue su mundo.\nLlegó con mil pacientes; se marchó cuando solo quedaban trescientos. El resto, en su mayoría, había encontrado su última morada en el camposanto del propio sanatorio, un terreno irregular en el borde de la propiedad que el estado había clausurado y abandonado hacía tiempo. Los certificados de defunción eran un desastre, decían los funcionarios. La verdad, pensaba Elías, era que nadie quería llevar la cuenta de las almas que se apagaban en ese lugar.\nSu primer turno de noche fue su bautismo de fuego y sangre. Un hombre, silencioso durante semanas, se levantó en la oscuridad del pabellón de crónicos, arrancó un listón de madera de su catre y, antes de que sonara la primera alarma, había acabado con la vida de cinco de sus compañeros. Elías aprendió esa noche que el terror más inmediato no venía de los susurros en los pasillos, sino de la carne y el hueso.\n\nPero había otro tipo de miedo, uno más lento y pegajoso. Las rondas nocturnas eran un peregrinaje a través de la oscuridad, de un pabellón a otro, bajo un cielo sin estrellas. Era en esos caminos solitarios donde sentía que no iba solo. No era una presencia humana; lo describía en su mente como el aleteo pesado de un pájaro enorme y oscuro que volaba justo por encima de su cabeza, sin sonido, una sombra en la sombra que siempre parecía guiarlo hacia el cementerio.\n\nEl cementerio era el corazón prohibido de la Colina. La maleza se había tragado la mitad de las lápidas, que se inclinaban como dientes podridos. Los pacientes más inquietos, en sus fugas desesperadas, a menudo terminaban allí. A veces, regresaban con trofeos macabros. Elías nunca olvidaría al hombre de la mirada perdida que, una mañana, se presentó en el comedor con una mano momificada, de piel acartonada y dedos esqueléticos, que había desenterrado de una tumba sin nombre. El análisis forense, solicitado por un psiquiatra morbosamente curioso, dató la mano en el siglo XVII. La mano de un conquistador, o quizá de un santo, ahora el juguete de un loco.\n\nPero fue Adela quien finalmente rompió algo dentro de él.\n\nEra una mujer de mediana edad internada en el pabellón de mujeres intratables. El resto del personal la llamaba \"la bruja\". No por maldad, sino con una especie de respeto temeroso. Adela pasaba días en silencio, y luego, sin previo aviso, describía con detalle lo que un enfermero había comido en la cafetería, o una conversación privada ocurrida en el ala administrativa.\n\nUna noche, Adela desapareció. Su habitación, en el segundo piso, estaba cerrada con llave desde fuera. La única ventana, enrejada, se abría a una caída de diez metros sobre un patio de cemento. Era imposible. El personal recorrió cada pasillo, cada rincón oscuro. Elías, con el corazón martilleándole en el pecho, sintió el impulso, el tirón de esa sombra alada, y caminó hacia el cementerio.\n\nLa encontró allí. La luna llena bañaba el camposanto con una luz fantasmal. Adela estaba de pie, completamente desnuda, en el centro del terreno, con la espalda recta y la cabeza inclinada como si escuchara una música lejana. Su piel pálida parecía de mármol.\n—Adela —la llamó Elías, con la voz apenas un susurro.\nElla se giró lentamente. Su mirada no era la de una enferma; era antigua, lúcida y aterradora. No había locura en sus ojos, sino un conocimiento profundo y perturbador.\n—Ya sabía que vendrías, enfermero —dijo, y su voz no tembló—. Te veo cuando haces tus rondas. Te veo cuando crees que nadie mira.\nElías se quedó helado. No era la desnudez, ni el lugar, ni la hora. Era la certeza en su voz. La sensación de que los muros del sanatorio no solo contenían la locura, sino que la propia locura había empezado a observar, a elegir, a seguir.\n\nLa llevaron de vuelta, sedada y envuelta en una manta. Pero para Elías, la noche no terminó. La fijación de Adela en él se intensificó. A veces, desde el otro lado del complejo, juraría escuchar su voz en su cabeza, un susurro que comentaba sus acciones. El miedo a la violencia de los pacientes se transformó en algo peor: el terror a una invasión psíquica, a que la enfermedad del lugar se contagiara a su propia mente.\n\nPoco después, presentó su renuncia.\n\nEl día que se marchó, se detuvo en la puerta principal y miró hacia atrás. La Colina Verde parecía tranquila bajo el sol de la tarde. Pero él sabía la verdad. No era solo un edificio lleno de gente rota. Era un lugar con memoria, un organismo vivo que se alimentaba del sufrimiento y que, a veces, en la profunda quietud de la noche, abría un ojo para mirar a quienes se atrevían a caminar por sus pasillos. Elías se subió a su coche y condujo sin mirar atrás, sabiendo que una parte de esa Colina, y de los ojos vacíos que la habitaban, viajaría con él para siempre.",
+  "suceso_principal_resumen": "Un enfermero es atormentado psicológicamente por fenómenos paranormales en un manicomio, incluyendo una sombra persistente y una paciente clarividente que se aparece en el cementerio del recinto.",
+  "protagonistas_descripcion": "Elías (pseudónimo), un ex-enfermero que trabajó durante 10 años en un sanatorio psiquiátrico.",
+  "contexto_ambiental": {
+    "clima": "Fresco / Frío nocturno",
+    "temperatura": "Aprox. 12°C",
+    "condiciones_luz": "Oscuridad, luz de luna en exteriores",
+    "ruidos_ambiente": "Silencio rural, viento, sonidos propios de un hospital.",
+    "factores_externos": "Aislamiento geográfico del sanatorio."
+  },
+  "entidades_paranormales": [
+    {
+      "tipo": "Humano con habilidades psíquicas / Aparición",
+      "descripcion": "Paciente 'Adela', mujer de mediana edad con reputación de 'bruja' y habilidades clarividentes.",
+      "comportamiento": "Aparece en lugares imposibles (cementerio), parece comunicarse telepáticamente, acosa psicológicamente al testigo.",
+      "frecuencia_aparicion": "Intermitente, intensificándose hacia el final."
+    },
+    {
+      "tipo": "Sombra / Entidad no-humana",
+      "descripcion": "Una sombra descrita como un 'pájaro enorme y oscuro' que sobrevuela al testigo sin hacer ruido.",
+      "comportamiento": "Presencia opresiva durante las rondas nocturnas, parece guiar o tener una conexión con el cementerio.",
+      "frecuencia_aparicion": "Recurrente (casi todas las noches)."
+    }
+  ],
+  "elementos_clave": [
+    "Cementerio",
+    "Rondas Nocturnas",
+    "Paciente Adela",
+    "Sombra Alada",
+    "Pabellones Psiquiátricos",
+    "Restos Humanos"
+  ],
+  "historia_entidades": "La paciente 'Adela' era una interna con reputación de 'bruja' entre el personal. La 'Sombra Alada' es una entidad desconocida y persistente en los terrenos del sanatorio.",
+  "historia_subgenero": "terror_psicologico",
+  "notas_adicionales": "El impacto psicológico del acoso paranormal fue tan severo que el testigo principal, un profesional de la salud, renunció a su trabajo de diez años.",
+  "duracion_evento_minutos": 60,
+  "patron_recurrencia": "Nocturno. La 'sombra' era recurrente. El acoso de 'Adela' fue un evento climático precedido por interacciones menores.",
+  "ubicacion": {
+    "pais": "Colombia",
+    "codigo_pais": "CO",
+    "nivel1_nombre": "Cundinamarca",
+    "nivel1_codigo": "CUN",
+    "nivel2_nombre": "Municipio no especificado",
+    "nivel2_codigo": null,
+    "nivel3_nombre": "Zona rural",
+    "nivel4_nombre": "Sanatorio de la Colina Verde (ficticio)",
+    "latitud": 4.8133,
+    "longitud": -74.3522,
+    "precision_metros": 5000,
+    "descripcion_lugar": "Antiguo hospital neuropsiquiátrico ubicado en una zona rural y aislada, con múltiples pabellones y un cementerio propio.",
+    "lugar_especifico": "Sanatorio de la Colina Verde",
+    "tipo_lugar": "hospital_abandonado",
+    "zona_horaria": "America/Bogota",
+    "altitud_metros": 2700,
+    "actividad_paranormal_reportada": true,
+    "numero_historias_reportadas": 1,
+    "primera_actividad_reportada": "1995-01-01",
+    "ultima_actividad_reportada": "2005-12-31",
+    "verificada": false,
+    "fuente_verificacion": "Testimonio único"
+  },
+  "fuente_relato": "llamada_oyente",
+  "genero_principal": "paranormal",
+  "epoca_historica": "Contemporánea (aprox. 1995-2005)",
+  "nivel_credibilidad": 4.2,
+  "nivel_impacto": 5,
+  "ponderacion_impacto": 5,
+  "potencial_adaptacion": 3,
+  "nivel_verificacion": "testimonio_unico",
+  "longitud_extracto_palabras": 118,
+  "factores_credibilidad": {
+    "multiples_testigos": 2,
+    "evidencia_fisica": 2,
+    "consistencia_relatos": 5,
+    "ubicacion_verificable": 3,
+    "contexto_historico": 4,
+    "sobriedad_testigo": 5,
+    "conocimiento_previo": 1,
+    "estado_emocional": 4
+  },
+  "banderas_rojas": [],
+  "fecha_sucesos": null,
+  "fecha_evento_inicio": "1995-01-01",
+  "fecha_evento_fin": "2005-12-31",
+  "hora_evento": "Nocturno",
+  "evento_recurrente": true,
+  "dificultad_produccion": 3,
+  "tiempo_produccion_estimado": 360,
+  "presupuesto_estimado": 200,
+  "contenido_sensible": true,
+  "advertencias": [
+    "terror_psicológico",
+    "contenido_perturbador",
+    "sufrimiento_humano",
+    "referencias_a_muerte"
+  ],
+  "edad_minima_recomendada": 18,
+  "duracion_impacto_emocional": "intenso",
+  "testigo_principal": {
+    "pseudonimo": "Elías",
+    "edad_aprox": 40,
+    "ocupacion": "Ex-enfermero",
+    "relacion_evento": "Trabajador del lugar durante los eventos.",
+    "presencial": true,
+    "credibilidad_estimada": 4,
+    "factores_credibilidad": {
+      "estado_mental": 5,
+      "sobriedad": 5,
+      "consistencia": 5,
+      "motivaciones_secundarias": 1
+    },
+    "antecedentes_paranormales": false,
+    "contacto_disponible": false,
+    "notas_testigo": "El testigo relata los eventos de forma coherente y con un palpable impacto emocional que lo llevó a renunciar a su trabajo. No busca notoriedad."
+  },
+  "testigos_secundarios": [
+    {
+      "pseudonimo": "Adela, la paciente",
+      "tipo_testigo": "antagonista",
+      "edad_aprox": 50,
+      "ocupacion": "Paciente",
+      "relacion_evento": "Fuente principal de la actividad paranormal dirigida.",
+      "presencial": true,
+      "credibilidad_estimada": 0,
+      "notas": "Descrita como una 'bruja' o clarividente por el personal. Figura central en los eventos más inquietantes."
+    }
+  ],
+  "derechos_uso": "permiso_verbal",
+  "autorizacion_comercial": true,
+  "autorizacion_adaptacion": true,
+  "restricciones_uso": "Citar la fuente original (programa de radio) en los créditos.",
+  "contacto_derechos": "admin@archivosparanormales.com",
+  "publicar_inmediatamente": true
+}

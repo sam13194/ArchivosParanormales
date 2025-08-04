@@ -24,6 +24,7 @@ export default function SubmitStoryPage() {
 
     const [isRecording, setIsRecording] = useState(false);
     const [recordedAudio, setRecordedAudio] = useState<Blob | null>(null);
+    const [isUploading, setIsUploading] = useState(false);
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
     const audioChunksRef = useRef<Blob[]>([]);
 
@@ -74,6 +75,25 @@ export default function SubmitStoryPage() {
         }
     };
 
+    const uploadFileToCloudinary = async (file: File | Blob, type: 'audio' | 'image') => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('type', type);
+        formData.append('storyId', Date.now().toString());
+        formData.append('userId', user?.uid || 'anonymous');
+
+        const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to upload file');
+        }
+
+        return response.json();
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!title) {
@@ -85,25 +105,62 @@ export default function SubmitStoryPage() {
             return;
         }
 
-        // Placeholder for submission logic
-        console.log({
-            title,
-            text: text.length > 0 ? text : null,
-            audioFile,
-            recordedAudio,
-        });
+        if (!text && !audioFile && !recordedAudio) {
+            toast({
+                variant: "destructive",
+                title: "Contenido requerido",
+                description: "Por favor, proporciona tu historia en texto o audio.",
+            });
+            return;
+        }
 
-        toast({
-            title: "¡Testimonio enviado!",
-            description: "Gracias por compartir tu historia. La revisaremos pronto.",
-        });
-        
-        // Reset form
-        setTitle('');
-        setText('');
-        setAudioFile(null);
-        setRecordedAudio(null);
-        router.push('/profile');
+        setIsUploading(true);
+
+        try {
+            let audioUrl = null;
+            
+            // Upload audio if provided
+            if (audioFile || recordedAudio) {
+                const fileToUpload = audioFile || recordedAudio!;
+                const uploadResult = await uploadFileToCloudinary(fileToUpload, 'audio');
+                audioUrl = uploadResult.data.secure_url;
+            }
+
+            // Here you would normally save to your database
+            // For now, we'll just log the data
+            const storyData = {
+                title,
+                text: text.length > 0 ? text : null,
+                audioUrl,
+                userId: user?.uid,
+                createdAt: new Date().toISOString(),
+                status: 'pending_review',
+            };
+
+            console.log('Story data to save:', storyData);
+
+            toast({
+                title: "¡Testimonio enviado!",
+                description: "Tu historia ha sido subida exitosamente. La revisaremos pronto.",
+            });
+            
+            // Reset form
+            setTitle('');
+            setText('');
+            setAudioFile(null);
+            setRecordedAudio(null);
+            router.push('/profile');
+
+        } catch (error) {
+            console.error('Submit error:', error);
+            toast({
+                variant: "destructive",
+                title: "Error al enviar",
+                description: "Hubo un problema al subir tu historia. Inténtalo de nuevo.",
+            });
+        } finally {
+            setIsUploading(false);
+        }
     };
 
     if (loading || !user) {
@@ -197,8 +254,8 @@ export default function SubmitStoryPage() {
                             </TabsContent>
                         </Tabs>
 
-                        <Button type="submit" size="lg" className="w-full mt-6">
-                            Enviar mi testimonio
+                        <Button type="submit" size="lg" className="w-full mt-6" disabled={isUploading}>
+                            {isUploading ? 'Subiendo...' : 'Enviar mi testimonio'}
                         </Button>
                     </form>
                 </CardContent>

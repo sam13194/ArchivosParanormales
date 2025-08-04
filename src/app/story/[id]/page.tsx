@@ -1,19 +1,58 @@
 import Image from "next/image";
 import { StoryPlayer } from "@/components/story-player";
-import { mockStoryData, mockStories } from "@/lib/data";
 import { notFound } from "next/navigation";
 import { MapPin, Star, Shield, Users, Calendar, Tag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { StoryCarousel } from "@/components/story-carousel";
+import { DatabaseStory, adaptDatabaseStory } from "@/lib/types";
 
-export default function StoryPage({ params }: { params: { id: string } }) {
-  const story = mockStories.find((s) => s.id.toString() === params.id);
+async function getStory(id: string): Promise<DatabaseStory | null> {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/stories/${id}`, {
+      cache: 'no-store'
+    });
+    
+    if (!response.ok) {
+      return null;
+    }
+    
+    const data = await response.json();
+    return data.story;
+  } catch (error) {
+    console.error('Error fetching story:', error);
+    return null;
+  }
+}
 
-  if (!story) {
+async function getRelatedStories(): Promise<DatabaseStory[]> {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/stories?limit=4`, {
+      cache: 'no-store'
+    });
+    
+    if (!response.ok) {
+      return [];
+    }
+    
+    const data = await response.json();
+    return data.stories || [];
+  } catch (error) {
+    console.error('Error fetching related stories:', error);
+    return [];
+  }
+}
+
+export default async function StoryPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const dbStory = await getStory(resolvedParams.id);
+
+  if (!dbStory) {
     notFound();
   }
 
-  const related = mockStories.filter(s => story.relatedStories.includes(s.id));
+  const story = adaptDatabaseStory(dbStory);
+  const relatedStories = await getRelatedStories();
+  const adaptedRelated = relatedStories.map(adaptDatabaseStory);
 
   return (
     <div className="min-h-screen">
@@ -77,7 +116,7 @@ export default function StoryPage({ params }: { params: { id: string } }) {
         </div>
       </div>
       <div className="container mx-auto max-w-screen-2xl px-4 py-16">
-        <StoryCarousel title="Historias Relacionadas" stories={related} />
+        <StoryCarousel title="Historias Relacionadas" stories={adaptedRelated} />
       </div>
     </div>
   );

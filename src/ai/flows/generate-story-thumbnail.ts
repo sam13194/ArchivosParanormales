@@ -10,7 +10,6 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
-import wav from 'wav';
 
 const GenerateStoryThumbnailInputSchema = z.object({
   storyTitle: z.string().describe('The title of the paranormal story.'),

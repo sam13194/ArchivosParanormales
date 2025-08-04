@@ -1,0 +1,101 @@
+table_name,column_name,data_type,is_nullable,column_default
+archivos_multimedia,id,integer,NO,nextval('archivos_multimedia_id_seq'::regclass)
+archivos_multimedia,historia_id,integer,YES,null
+archivos_multimedia,tipo_archivo,character varying,NO,null
+archivos_multimedia,nombre_archivo,character varying,NO,null
+archivos_multimedia,ruta_absoluta,character varying,NO,null
+archivos_multimedia,ruta_relativa,character varying,NO,null
+archivos_multimedia,tamaño_bytes,bigint,YES,null
+archivos_multimedia,hash_archivo,character varying,YES,null
+archivos_multimedia,duracion_segundos,integer,YES,null
+archivos_multimedia,formato,character varying,YES,null
+archivos_multimedia,bitrate,character varying,YES,null
+archivos_multimedia,sample_rate,integer,YES,null
+archivos_multimedia,canales,smallint,YES,null
+archivos_multimedia,ancho_px,integer,YES,null
+archivos_multimedia,alto_px,integer,YES,null
+archivos_multimedia,fps,smallint,YES,null
+archivos_multimedia,metadata_extra,jsonb,YES,null
+archivos_multimedia,descripcion,text,YES,null
+archivos_multimedia,version,smallint,YES,1
+archivos_multimedia,is_active,boolean,YES,true
+archivos_multimedia,uploaded_by_uid,character varying,YES,null
+archivos_multimedia,fecha_creacion,timestamp with time zone,YES,now()
+archivos_multimedia,fecha_modificacion,timestamp with time zone,YES,now()
+colaboradores,id,integer,NO,nextval('colaboradores_id_seq'::regclass)
+colaboradores,historia_id,integer,YES,null
+colaboradores,nombre,character varying,NO,null
+colaboradores,rol,character varying,NO,null
+colaboradores,creditos,text,YES,null
+colaboradores,porcentaje_participacion,numeric,YES,0.00
+colaboradores,created_at,timestamp with time zone,YES,now()
+configuracion,clave,character varying,NO,null
+configuracion,valor,text,YES,null
+configuracion,tipo_dato,character varying,YES,null
+configuracion,descripcion,text,YES,null
+configuracion,categoria,character varying,YES,null
+configuracion,updated_at,timestamp with time zone,YES,now()
+configuracion_homepage,id,integer,NO,nextval('configuracion_homepage_id_seq'::regclass)
+configuracion_homepage,configuracion,jsonb,NO,null
+configuracion_homepage,activa,boolean,YES,false
+configuracion_homepage,fecha_creacion,timestamp with time zone,YES,now()
+configuracion_homepage,fecha_actualizacion,timestamp with time zone,YES,null
+configuracion_homepage,creado_por,character varying,YES,null
+contexto_ambiental,id,integer,NO,nextval('contexto_ambiental_id_seq'::regclass)
+contexto_ambiental,historia_id,integer,YES,null
+contexto_ambiental,clima_evento,character varying,YES,null
+contexto_ambiental,temperatura_aprox,smallint,YES,null
+contexto_ambiental,humedad_aprox,smallint,YES,null
+contexto_ambiental,presion_atmosferica,character varying,YES,null
+contexto_ambiental,fase_lunar,character varying,YES,null
+contexto_ambiental,actividad_solar,character varying,YES,null
+contexto_ambiental,festividad_religiosa,character varying,YES,null
+contexto_ambiental,evento_historico,character varying,YES,null
+contexto_ambiental,aniversario_especial,character varying,YES,null
+contexto_ambiental,situacion_social,character varying,YES,null
+contexto_ambiental,actividad_previa,text,YES,null
+contexto_ambiental,estado_emocional_testigos,character varying,YES,null
+contexto_ambiental,numero_personas_presente,smallint,YES,null
+contexto_ambiental,patron_temporal_detectado,boolean,YES,false
+contexto_ambiental,created_at,timestamp with time zone,YES,now()
+derechos,id,integer,NO,nextval('derechos_id_seq'::regclass)
+derechos,historia_id,integer,YES,null
+derechos,derechos_uso,character varying,YES,'permiso_verbal'::character varying
+derechos,autorizacion_comercial,boolean,YES,true
+derechos,autorizacion_adaptacion,boolean,YES,true
+derechos,restricciones_uso,text,YES,null
+derechos,contacto_derechos,character varying,YES,null
+derechos,created_at,timestamp with time zone,YES,now()
+derechos,updated_at,timestamp with time zone,YES,now()
+elementos_clave,id,integer,NO,nextval('elementos_clave_id_seq'::regclass)
+elementos_clave,historia_id,integer,YES,null
+elementos_clave,elemento,character varying,NO,null
+elementos_clave,relevancia,smallint,YES,1
+elementos_clave,categoria,character varying,YES,null
+elementos_clave,descripcion,text,YES,null
+elementos_clave,created_at,timestamp with time zone,YES,now()
+entidades_paranormales,id,integer,NO,nextval('entidades_paranormales_id_seq'::regclass)
+entidades_paranormales,nombre_entidad,character varying,YES,null
+entidades_paranormales,alias_conocidos,jsonb,YES,'[]'::jsonb
+entidades_paranormales,tipo_entidad,character varying,YES,null
+entidades_paranormales,descripcion_fisica,text,YES,null
+entidades_paranormales,genero,character varying,YES,null
+entidades_paranormales,edad_aparente_min,smallint,YES,null
+entidades_paranormales,edad_aparente_max,smallint,YES,null
+entidades_paranormales,vestimenta_tipica,text,YES,null
+entidades_paranormales,caracteristicas_distintivas,text,YES,null
+entidades_paranormales,patron_comportamiento,text,YES,null
+entidades_paranormales,nivel_hostilidad,character varying,YES,null
+entidades_paranormales,horarios_actividad,jsonb,YES,'[]'::jsonb
+entidades_paranormales,triggeres_aparicion,jsonb,YES,'[]'::jsonb
+entidades_paranormales,palabras_clave_identificacion,jsonb,YES,'[]'::jsonb
+entidades_paranormales,primera_aparicion_conocida,date,YES,null
+entidades_paranormales,ultima_aparicion_conocida,date,YES,null
+entidades_paranormales,numero_historias_asociadas,integer,YES,0
+entidades_paranormales,radio_accion_km,numeric,YES,null
+entidades_paranormales,nivel_certeza,character varying,YES,null
+entidades_paranormales,notas_investigacion,text,YES,null
+entidades_paranormales,created_at,timestamp with time zone,YES,now()
+entidades_paranormales,updated_at,timestamp with time zone,YES,now()
+factores_credibilidad,id,integer,NO,nextval('factores_credibilidad_id_seq'::regclass)
+factores_credibilidad,historia_id,integer,YES,null

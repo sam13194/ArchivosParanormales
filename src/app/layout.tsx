@@ -7,6 +7,8 @@ import { SiteFooter } from '@/components/site-footer';
 import { PlayerProvider } from '@/context/player-context';
 import { PlayerWrapper } from '@/components/player-wrapper';
 import { AuthProvider } from '@/context/auth-context';
+import { UserProfileProvider } from '@/context/user-profile-context';
+import { CartProvider } from '@/context/cart-context';
 
 export const metadata: Metadata = {
   title: 'Echoes of the Unseen - Archivos Paranormales',
@@ -30,14 +32,18 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased")}>
         <AuthProvider>
-          <PlayerProvider>
-            <PlayerWrapper>
-              <SiteHeader />
-              <main className="flex-grow">{children}</main>
-              <SiteFooter />
-            </PlayerWrapper>
-            <Toaster />
-          </PlayerProvider>
+          <UserProfileProvider>
+            <CartProvider>
+              <PlayerProvider>
+                <PlayerWrapper>
+                  <SiteHeader />
+                  <main className="flex-grow">{children}</main>
+                  <SiteFooter />
+                </PlayerWrapper>
+                <Toaster />
+              </PlayerProvider>
+            </CartProvider>
+          </UserProfileProvider>
         </AuthProvider>
       </body>
     </html>

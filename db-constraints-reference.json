@@ -1,0 +1,46 @@
+{
+  "_readme": "Especificaciones de Constraints de Base de Datos para Formulario Admin",
+  "_constraints": {
+    "campos_numericos": {
+      "credibilidad_score": "0-5 (decimal)",
+      "dificultad_produccion": "1-5 (entero)",
+      "ponderacion_impacto": "1-5 (entero)", 
+      "potencial_adaptacion": "1-3 (entero)"
+    },
+    "campos_enum": {
+      "fuente_relato": ["llamada_oyente", "historia_programa", "investigacion_propia"],
+      "nivel_verificacion": ["sin_verificar", "testimonio_unico", "multiples_testigos", "evidencia_fisica", "investigacion_completa", "verificado_experto"],
+      "duracion_impacto_emocional": ["leve", "moderado", "intenso", "traumático"],
+      "derechos_uso": ["dominio_publico", "uso_libre", "permiso_verbal", "contrato_firmado", "pendiente_autorizacion", "uso_restringido"],
+      "estado_procesamiento": ["extraida", "en_adaptacion", "adaptada", "en_produccion", "producida", "publicada"]
+    },
+    "campos_fecha": {
+      "fecha_evento_inicio": "YYYY-MM-DD formato o null",
+      "fecha_publicacion": "YYYY-MM-DD formato o null"
+    },
+    "campos_tiempo": {
+      "hora_evento": "HH:mm o HH:mm:ss formato o null"
+    },
+    "mapeos_formulario_a_db": {
+      "nivel_credibilidad (1-10)": "credibilidad_score (0-5)",
+      "nivel_impacto (1-10)": "ponderacion_impacto (1-5)",
+      "tiempo_estimado_produccion": "tiempo_produccion_estimado", 
+      "entidades[].nombre_entidad": "entidades_reportadas[].nombre",
+      "duracion_impacto_emocional='media'": "duracion_impacto_emocional='moderado'"
+    }
+  },
+  "_validation_rules": {
+    "required_fields": ["titulo", "descripcion_corta", "testimonio_completo"],
+    "auto_generated": ["codigo_unico", "created_at", "updated_at"],
+    "admin_controlled": ["estado_procesamiento", "fecha_publicacion", "moderado_por_uid"],
+    "auto_validated": "All enum values are validated and auto-corrected in API"
+  },
+  "_form_improvements_applied": [
+    "Added constraint specifications as helper text",
+    "Fixed enum options to match DB constraints exactly", 
+    "Added duracion_impacto_emocional as editable field",
+    "Corrected fuente_relato options",
+    "Updated nivel_verificacion options",
+    "Added numeric range validations with auto-limiting"
+  ]
+}

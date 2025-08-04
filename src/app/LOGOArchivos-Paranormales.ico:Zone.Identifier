@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://cloudconvert.com/
+HostUrl=https://eu-central.storage.cloudconvert.com/tasks/e2a7f424-98a3-4221-9555-742b93840600/LOGOArchivos-Paranormales.ico?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20250803%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20250803T174514Z&X-Amz-Expires=86400&X-Amz-Signature=17d8aade51379f938fcaea8f03705f3bd5e9ff794a1c116950f24dd40a244849&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22LOGOArchivos-Paranormales.ico%22&response-content-type=image%2Fvnd.microsoft.icon&x-id=GetObject

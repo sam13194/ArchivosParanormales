@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { onAuthStateChanged, User, signOut as firebaseSignOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { onAuthStateChanged, User, signOut as firebaseSignOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, updatePassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 
@@ -11,6 +11,8 @@ interface AuthContextType {
   login: (email: string, pass: string) => Promise<any>;
   register: (email: string, pass: string) => Promise<any>;
   logout: () => Promise<void>;
+  resetPassword: (email: string) => Promise<void>;
+  changePassword: (newPassword: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -43,8 +45,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     router.push('/');
   };
 
+  const resetPassword = async (email: string) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
+  const changePassword = async (newPassword: string) => {
+    if (!user) throw new Error('No user logged in');
+    return updatePassword(user, newPassword);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, resetPassword, changePassword }}>
       {!loading && children}
     </AuthContext.Provider>
   );

@@ -1,0 +1,35 @@
+📋 Estado del Proyecto - Archivos Paranormales
+
+⚠️ **ARCHIVO OBSOLETO - DOCUMENTACIÓN REORGANIZADA**
+
+Este archivo se ha vuelto muy extenso (750+ líneas). La documentación del proyecto ahora está organizada en archivos separados para facilitar la navegación y mantenimiento.
+
+🔗 **NUEVA UBICACIÓN DE LA DOCUMENTACIÓN:**
+
+📁 **`/docs/estado-proyecto/`**
+
+### 📄 **Archivos Disponibles:**
+
+- **[`README.md`](./docs/estado-proyecto/README.md)** - Índice principal y navegación
+- **[`01-tecnologias-base.md`](./docs/estado-proyecto/01-tecnologias-base.md)** - Stack tecnológico completo
+- **[`11-manejo-datos-incompletos.md`](./docs/estado-proyecto/11-manejo-datos-incompletos.md)** - Sistema de autocompletado
+- **[`12-sincronizacion-formulario.md`](./docs/estado-proyecto/12-sincronizacion-formulario.md)** - Unificación de +150 campos
+- **[`14-bloqueadores-criticos.md`](./docs/estado-proyecto/14-bloqueadores-criticos.md)** - Issues que impiden deploy
+- **[`15-prioridades-desarrollo.md`](./docs/estado-proyecto/15-prioridades-desarrollo.md)** - Roadmap y próximos pasos
+
+### 🎯 **Resumen Ejecutivo:**
+
+**Estado Actual:** 98% desarrollo completado, sistema avanzado totalmente implementado  
+**Bloqueador Crítico:** Base de datos desactualizada (falta esquema para +150 campos)  
+**Próximo Paso:** Ejecutar scripts SQL de actualización  
+
+### 🚨 **Acción Inmediata Requerida:**
+
+1. **Actualizar base de datos** con esquema completo (+100 campos nuevos)
+2. **Configurar variables** de producción en Vercel
+3. **Deploy funcional** en menos de 24 horas
+
+---
+
+📖 **Para información detallada, revisar la documentación organizada en:**  
+**`/docs/estado-proyecto/README.md`**

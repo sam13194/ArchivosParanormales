@@ -1,0 +1,44 @@
+{
+  "_RESTRICCIONES_DE_CAMPOS": "IMPORTANTE LEER - Los siguientes campos tienen restricciones específicas en la base de datos",
+  "_CAMPOS_NUMERICOS_RANGOS": {
+    "nivel_credibilidad": "0-5 (decimal, precisión 0.1)",
+    "ponderacion_impacto": "1-5 (entero)",
+    "potencial_adaptacion": "1-3 (entero)",
+    "dificultad_produccion": "1-5 (entero)",
+    "factores_credibilidad_todos": "1-5 (entero cada uno)"
+  },
+  "_CAMPOS_ENUM_VALORES_VALIDOS": {
+    "fuente_relato": "llamada_oyente | historia_programa | investigacion_propia",
+    "nivel_verificacion": "sin_verificar | testimonio_unico | multiples_testigos | evidencia_fisica | investigacion_completa | verificado_experto",
+    "duracion_impacto_emocional": "leve | moderado | intenso | traumático",
+    "derechos_uso": "dominio_publico | uso_libre | permiso_verbal | contrato_firmado | pendiente_autorizacion | uso_restringido",
+    "estado_procesamiento": "extraida | en_adaptacion | adaptada | en_produccion | producida | publicada"
+  },
+  
+  "_CAMPOS_ARRAY_EJEMPLOS": {
+    "palabras_clave_patron": "Array de strings con palabras clave que identifican patrones en la historia",
+    "banderas_rojas": "Array de strings con indicadores de posibles problemas de credibilidad",
+    "advertencias": "Array de strings con tipos de contenido que requieren advertencia"
+  },
+  
+  "_VALORES_VALIDOS_ADVERTENCIAS": [
+    "violencia_explicita",
+    "contenido_perturbador", 
+    "actividad_poltergeist",
+    "apariciones_nocturnas",
+    "contenido_sexual",
+    "drogas_alcohol",
+    "autolesiones",
+    "muerte_violenta"
+  ],
+  
+  "_VALORES_VALIDOS_BANDERAS_ROJAS": [
+    "inconsistencias_temporales",
+    "detalles_contradictorios",
+    "motivaciones_comerciales",
+    "testigo_bajo_influencia",
+    "historia_previamente_publicada",
+    "elementos_ficticios_conocidos",
+    "falta_corroboracion"
+  ]
+}

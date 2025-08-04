@@ -1,0 +1,28 @@
+
+> nextn@0.1.0 dev
+> next dev --turbopack -p 9002
+
+   ▲ Next.js 15.3.3 (Turbopack)
+   - Local:        http://localhost:9002
+   - Network:      http://172.27.31.154:9002
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 1190ms
+ ○ Compiling /api/user/profile ...
+ ✓ Compiled /api/user/profile in 1308ms
+ GET /api/user/profile?firebase_uid=U3hW8p1ne1dP2YtvoRYXoxE2QNo1 200 in 2436ms
+ ○ Compiling / ...
+ ✓ Compiled / in 4s
+ GET / 200 in 4406ms
+ ○ Compiling /admin ...
+ ✓ Compiled /admin in 2s
+ GET /admin 200 in 2084ms
+ ○ Compiling /api/admin/users ...
+ ✓ Compiled /api/admin/users in 701ms
+ GET /api/admin/users?search=wilmer13194 200 in 1534ms
+ GET /api/user/profile?email=wilmer13194%40gmail.com 200 in 777ms
+ GET / 200 in 570ms
+   Reload env: .env.local
+ ✓ Compiled in 1434ms
+[?25h
