@@ -184,9 +184,9 @@ export function useStoryManagement() {
       potencial_adaptacion: 1,
       nivel_verificacion: 'sin_verificar',
       longitud_extracto_palabras: 0,
-      fecha_sucesos: 'Desconocido',
-      fecha_evento_inicio: 'Desconocido',
-      fecha_evento_fin: 'Desconocido',
+      fecha_sucesos: '',
+      fecha_evento_inicio: '',
+      fecha_evento_fin: '',
       hora_evento: '',
       evento_recurrente: false,
       dificultad_produccion: 1,
@@ -943,18 +943,90 @@ export function useStoryManagement() {
     setIsSubmittingStory(true);
     
     try {
-      // In a real implementation, you would send this to your API
       console.log('Creating new story:', newStoryForm);
       
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Preparar datos para enviar a la API
+      const formDataToSend = {
+        // Campos básicos de historias
+        titulo: newStoryForm.historias.titulo_provisional,
+        descripcion_corta: newStoryForm.historias.descripcion_corta,
+        testimonio_completo: newStoryForm.historias.testimonio_completo,
+        extracto_verbatim: newStoryForm.historias.extracto_verbatim,
+        historia_reescrita: newStoryForm.historias.historia_reescrita,
+        
+        // URLs de archivos subidos
+        audio_url: audioFile ? newStoryForm.archivos_multimedia.find((a: any) => a.tipo_archivo === 'audio_original')?.ruta_absoluta : null,
+        imagen_url: imageFile ? newStoryForm.archivos_multimedia.find((a: any) => a.tipo_archivo === 'imagen_portada')?.ruta_absoluta : null,
+        
+        // Análisis
+        fuente_relato: newStoryForm.historias.fuente_relato,
+        genero_principal: newStoryForm.historias.genero_principal,
+        nivel_credibilidad: newStoryForm.historias.nivel_credibilidad,
+        nivel_impacto: newStoryForm.historias.nivel_impacto,
+        nivel_verificacion: newStoryForm.historias.nivel_verificacion,
+        
+        // Ubicación
+        ubicacion: newStoryForm.ubicacion,
+        
+        // Fecha
+        fecha_sucesos: newStoryForm.historias.fecha_sucesos,
+        hora_evento: newStoryForm.historias.hora_evento,
+        duracion_evento_minutos: newStoryForm.historias.duracion_evento_minutos,
+        
+        // Testigos
+        testigo_principal: newStoryForm.testigo_principal,
+        testigos_secundarios: newStoryForm.testigos_secundarios,
+        
+        // Entidades paranormales
+        entidades_reportadas: newStoryForm.entidades_paranormales,
+        
+        // Contexto ambiental
+        contexto_ambiental: newStoryForm.contexto_ambiental,
+        
+        // Producción
+        dificultad_produccion: newStoryForm.historias.dificultad_produccion,
+        tiempo_produccion_estimado: newStoryForm.historias.tiempo_produccion_estimado,
+        presupuesto_estimado: newStoryForm.historias.presupuesto_estimado,
+        
+        // Admin
+        admin_uid: 'admin_user', // TODO: Get from auth context
+        publicar_inmediatamente: newStoryForm.historias.publicar_inmediatamente,
+        
+        // Todos los campos adicionales del formulario completo
+        ...newStoryForm
+      };
+
+      // Llamar a la API admin
+      const response = await fetch('/api/admin/historias', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataToSend),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || `Error ${response.status}: ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      const historiaCreada = result.historia;
+
+      // Mostrar mensaje de éxito con ID
+      if (historiaCreada && historiaCreada.id) {
+        alert(`¡Historia creada exitosamente!\n\nID de la historia: ${historiaCreada.id}\nTítulo: ${historiaCreada.titulo_provisional || 'Sin título'}\nCódigo único: ${historiaCreada.codigo_unico || 'N/A'}`);
+      } else {
+        alert('¡Historia creada exitosamente!');
+      }
       
-      alert('Historia creada exitosamente!');
       clearForm();
       
     } catch (error) {
       console.error('Error creating story:', error);
-      alert('Error al crear la historia');
+      const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
+      alert(`Error al crear la historia:\n${errorMessage}`);
+      setValidationErrors([errorMessage]);
     } finally {
       setIsSubmittingStory(false);
     }

@@ -6,6 +6,7 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const estado = searchParams.get('estado'); // 'todas', 'publicadas', 'pendientes', etc.
+    const id = searchParams.get('id'); // ID específico para obtener una historia
     
     let query = supabaseAdmin
       .from('historias')
@@ -30,13 +31,32 @@ export async function GET(request: NextRequest) {
         colaboradores(*)
       `);
 
+    // Si se especifica un ID, obtener solo esa historia
+    if (id) {
+      query = query.eq('id', parseInt(id));
+      const { data: historia, error } = await query.single();
+      
+      if (error) {
+        console.error('Error fetching historia by ID:', error);
+        return NextResponse.json(
+          { error: 'Failed to fetch historia' },
+          { status: 500 }
+        );
+      }
+
+      return NextResponse.json({
+        success: true,
+        historia
+      });
+    }
+
     // Filtrar por estado si se especifica
     if (estado && estado !== 'todas') {
       query = query.eq('estado_procesamiento', estado);
     }
 
     // Ordenar por fecha de creación descendente
-    query = query.order('fecha_creacion', { ascending: false });
+    query = query.order('created_at', { ascending: false });
 
     const { data: historias, error } = await query;
 
@@ -196,21 +216,24 @@ export async function POST(request: NextRequest) {
       
       // Fechas y tiempo
       fecha_evento_inicio: fecha_sucesos && fecha_sucesos !== 'Desconocido' && fecha_sucesos.match(/^\d{4}-\d{2}-\d{2}$/) ? new Date(fecha_sucesos).toISOString().split('T')[0] : null,
+      fecha_evento_fin: resto_campos.historias?.fecha_evento_fin && resto_campos.historias.fecha_evento_fin.match(/^\d{4}-\d{2}-\d{2}$/) ? new Date(resto_campos.historias.fecha_evento_fin).toISOString().split('T')[0] : null,
       hora_evento: hora_evento && hora_evento.match(/^\d{2}:\d{2}(:\d{2})?$/) ? hora_evento : null,
       duracion_evento_minutos: duracion_evento_minutos,
+      evento_recurrente: resto_campos.historias?.evento_recurrente || false,
+      patron_recurrencia: resto_campos.historias?.patron_recurrencia || '',
       fecha_transcripcion: new Date().toISOString().split('T')[0],
       
       // Metadata
-      epoca_historica: resto_campos.epoca_historica || 'Contemporánea',
-      protagonistas_descripcion: resto_campos.protagonistas_descripcion,
-      palabras_clave_patron: resto_campos.palabras_clave_patron || [],
+      epoca_historica: resto_campos.historias?.epoca_historica || resto_campos.epoca_historica || 'Contemporánea',
+      protagonistas_descripcion: resto_campos.historias?.protagonistas_descripcion || resto_campos.protagonistas_descripcion,
+      palabras_clave_patron: Array.isArray(resto_campos.historias?.palabras_clave_patron) ? resto_campos.historias.palabras_clave_patron : (Array.isArray(resto_campos.palabras_clave_patron) ? resto_campos.palabras_clave_patron : []),
       longitud_extracto_palabras: extracto_verbatim ? extracto_verbatim.split(' ').length : 0,
       suceso_principal_resumen: descripcion_corta,
       historia_reescrita,
       
       // Producción
-      duracion_impacto_emocional: ['leve', 'moderado', 'intenso', 'traumático'].includes(resto_campos.duracion_impacto_emocional) 
-        ? resto_campos.duracion_impacto_emocional 
+      duracion_impacto_emocional: ['leve', 'moderado', 'intenso', 'traumático'].includes(resto_campos.historias?.duracion_impacto_emocional) 
+        ? resto_campos.historias.duracion_impacto_emocional 
         : resto_campos.duracion_impacto_emocional === 'media' 
           ? 'moderado' 
           : 'moderado',
@@ -218,7 +241,13 @@ export async function POST(request: NextRequest) {
       tiempo_produccion_estimado: tiempo_produccion_estimado || tiempo_estimado_produccion || 300,
       recursos_necesarios: recursos_necesarios || {},
       presupuesto_estimado: presupuesto_estimado,
-      notas_adicionales: resto_campos.notas_adicionales,
+      notas_adicionales: resto_campos.historias?.notas_adicionales || resto_campos.notas_adicionales,
+      
+      // Advertencias y banderas
+      advertencias: Array.isArray(resto_campos.historias?.advertencias) ? resto_campos.historias.advertencias : [],
+      banderas_rojas: Array.isArray(resto_campos.historias?.banderas_rojas) ? resto_campos.historias.banderas_rojas : [],
+      contenido_sensible: resto_campos.historias?.contenido_sensible || false,
+      edad_minima_recomendada: resto_campos.historias?.edad_minima_recomendada || 13,
       
       // Derechos (campos directos en historias)
       derechos_uso: ['dominio_publico', 'uso_libre', 'permiso_verbal', 'contrato_firmado', 'pendiente_autorizacion', 'uso_restringido'].includes(resto_campos.derechos_uso) ? resto_campos.derechos_uso : 'permiso_verbal',

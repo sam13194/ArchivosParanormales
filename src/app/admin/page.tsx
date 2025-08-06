@@ -9,7 +9,8 @@ import {
   Eye, 
   FileText, 
   ShoppingCart, 
-  Users 
+  Users,
+  Edit
 } from "lucide-react";
 
 // Import custom hooks
@@ -21,6 +22,7 @@ import { useHomepageConfig } from '@/hooks/useHomepageConfig';
 import Dashboard from '@/components/admin/dashboard/Dashboard';
 import VistaPrincipal from '@/components/admin/vista-principal/VistaPrincipal';
 import NuevaHistoria from '@/components/admin/nueva-historia/NuevaHistoria';
+import EditarHistoria from '@/components/admin/edithistory/EditarHistoria';
 import Contenido from '@/components/admin/contenido/Contenido';
 import Tienda from '@/components/admin/tienda/Tienda';
 import Usuarios from '@/components/admin/usuarios/Usuarios';
@@ -78,7 +80,7 @@ export default function AdminPage() {
         </div>
 
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="grid w-full grid-cols-6">
+          <TabsList className="grid w-full grid-cols-7">
             <TabsTrigger value="overview">
               <BarChart3 className="h-4 w-4 mr-2" />
               Dashboard
@@ -90,6 +92,10 @@ export default function AdminPage() {
             <TabsTrigger value="create-story">
               <FileText className="h-4 w-4 mr-2" />
               Nueva Historia
+            </TabsTrigger>
+            <TabsTrigger value="edit-story">
+              <Edit className="h-4 w-4 mr-2" />
+              Editar Historia
             </TabsTrigger>
             <TabsTrigger value="content">
               <FileText className="h-4 w-4 mr-2" />
@@ -155,6 +161,10 @@ export default function AdminPage() {
               removeTestigoSecundario={storyManagement.removeTestigoSecundario}
               updateTestigoSecundario={storyManagement.updateTestigoSecundario}
             />
+          </TabsContent>
+
+          <TabsContent value="edit-story" className="space-y-6">
+            <EditarHistoria />
           </TabsContent>
 
           <TabsContent value="content" className="space-y-6">
